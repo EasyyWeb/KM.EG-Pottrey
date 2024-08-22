@@ -23,14 +23,14 @@
  import { getDatabase, ref, child, get} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
  
  const firebaseConfig = {
-   apiKey: "AIzaSyBfzxNY-1WXN5KBGygznEYmdsIn1BGQQZs",
-   authDomain: "firstdb-b4cf4.firebaseapp.com",
-   databaseURL: "https://firstdb-b4cf4-default-rtdb.firebaseio.com",
-   projectId: "firstdb-b4cf4",
-   storageBucket: "firstdb-b4cf4.appspot.com",
-   messagingSenderId: "338718660602",
-   appId: "1:338718660602:web:94db65be76a5ea742b7643",
-   measurementId: "G-ZQE22TG7S0"
+  apiKey: "AIzaSyDUB35XwzH6pDZ7M16h1AfjVVy849ym9cI",
+  authDomain: "customers-f53c0.firebaseapp.com",
+  databaseURL: "https://customers-f53c0-default-rtdb.firebaseio.com",
+  projectId: "customers-f53c0",
+  storageBucket: "customers-f53c0.appspot.com",
+  messagingSenderId: "1090163511903",
+  appId: "1:1090163511903:web:ce6e8eb5151c77411a41ea",
+  measurementId: "G-SZTHY35RSG"
  };
  
  // Initialize Firebase
