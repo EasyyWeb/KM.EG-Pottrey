@@ -19,6 +19,13 @@
  * Date:  Launched on Stardate 2024 
  */
 
+// When using modules, functions and variables are not automatically made global
+// so this is to Export and Access Function Globally
+ window.sendOrderWhatsApp = sendOrderWhatsApp;
+ window.removeFromCart = removeFromCart;
+ window.addToCart = addToCart;
+
+
  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
  import { getDatabase, ref, child, get} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
  
@@ -76,7 +83,8 @@ function initializePage() {
     const pageFunctions = {
         'Home': Home,
         'Product-details': Productdetails,
-        'Cart': Cart
+        'Cart': Cart,
+        'All':All
     };
     const pageFunction = pageFunctions[pageName];
     if (pageFunction) {
@@ -87,7 +95,8 @@ function initializePage() {
 // Call methods 
 function Home() {
   //display the last 5 items
-  const latestProducts = productsArray.slice(-5);
+  const latestProducts = productsArray.reverse().slice(-5);
+  
   displayProducts(latestProducts);
 }
 
@@ -100,6 +109,10 @@ function Productdetails() {
 
 function Cart() {
     CreateCart();
+}
+
+function All(){
+  filterAndDisplayProducts();
 }
 
 //Initializes common functionalities across all website pages.
@@ -163,11 +176,12 @@ function filterAndDisplayProducts() {
   if (selectedOption === 'second') {
     console.log('latest');
       filteredProducts = productsArray.slice(-5); // Last 5 items
+      
   } else if (selectedOption === 'first') {
     console.log('dndn');
       filteredProducts = productsArray.filter(product => product.bestSeller);
   }
-  console.log('Filterd product ', filteredProducts.length);
+  filteredProducts.reverse();
   displayProducts(filteredProducts);
 }
 
@@ -495,7 +509,7 @@ function createFooter(){
         <a href="https://www.facebook.com/profile.php?id=61564011337948"><i class="fab fa-facebook-f"></i></a>
         <i class="fab fa-whatsapp"></i>
         <i class="fab fa-instagram"></i>
-        <i class="fab fa-tiktok"></i>
+        <a href="https://www.tiktok.com/@karimmsaleh88"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
   </div>
@@ -653,8 +667,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // i have to allocate this code at the bottom of page so it doesn't make problems if there is no select list like if we are in the cart page 
 document.getElementById('productSelector').addEventListener('change', filterAndDisplayProducts);
 
-// When using modules, functions and variables are not automatically made global
-// so this is to Export and Access Function Globally
-window.sendOrderWhatsApp = sendOrderWhatsApp;
-window.removeFromCart = removeFromCart;
-window.addToCart = addToCart;
+
